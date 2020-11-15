@@ -11,7 +11,6 @@ var App *cli.App
 
 func makeApp(name string) *cli.App {
 
-
 	cli.HelpPrinter = func(out io.Writer, tpl string, data interface{}) {
 		cli.HelpPrinterCustom(out, tpl, data, nil)
 		os.Exit(0)
@@ -27,8 +26,8 @@ func makeApp(name string) *cli.App {
 }
 
 func makeCommands() []*cli.Command {
-	return []*cli.Command {
-		&cmdMock,
+	return []*cli.Command{
+		&cmdMock, &cmdTypeDef,
 	}
 }
 
