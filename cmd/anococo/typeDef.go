@@ -3,17 +3,14 @@ package main
 import (
 	"fmt"
 
+	"github.com/bagaking/easycmd"
+
 	lib "github.com/khicago/anococo"
 	"github.com/urfave/cli/v2"
 )
 
-var cmdTypeDef = cli.Command{
-	Name:     "typedef",
-	Aliases:  []string{"t"},
-	Usage:    "scan coco cmds from type annotations",
-	Category: "Type",
-	Action:   actionTypeDef,
-}
+var cmdTypeDef = easycmd.New("typedef").Set.
+	Alias("t").Usage("scan coco cmds from type annotations").End.Action(actionTypeDef)
 
 func actionTypeDef(ctx *cli.Context) error {
 	pth := "."

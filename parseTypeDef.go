@@ -2,9 +2,10 @@ package anococo
 
 import (
 	"fmt"
-	"github.com/khicago/gococo"
 	"go/ast"
 	"go/token"
+
+	"github.com/khicago/gococo"
 )
 
 type ParseResult map[string]TypeDefParseResult

@@ -11,10 +11,9 @@ import (
 )
 
 func CreateCli(name, usage string, flags []cli.Flag, action cli.ActionFunc) *cli.App {
-
 	// exit when help flag
 	// @see github.com/urfave/cli/v2/help.go:260
-	cli.HelpPrinter = func (out io.Writer, tpl string, data interface{}) {
+	cli.HelpPrinter = func(out io.Writer, tpl string, data interface{}) {
 		funcMap := template.FuncMap{
 			"join": strings.Join,
 		}

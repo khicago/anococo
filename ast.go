@@ -1,12 +1,13 @@
 package anococo
 
 import (
-	"github.com/khicago/gococo"
 	"go/ast"
 	"go/parser"
 	"go/token"
 	"os"
 	"path/filepath"
+
+	"github.com/khicago/gococo"
 )
 
 func MockCocoList() []gococo.Coco {

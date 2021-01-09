@@ -2,32 +2,25 @@ package main
 
 import (
 	"fmt"
-	"github.com/urfave/cli/v2"
-	"io"
 	"os"
+
+	"github.com/bagaking/easycmd"
+	"github.com/urfave/cli/v2"
 )
 
 var App *cli.App
 
 func makeApp(name string) *cli.App {
-
-	cli.HelpPrinter = func(out io.Writer, tpl string, data interface{}) {
-		cli.HelpPrinterCustom(out, tpl, data, nil)
-		os.Exit(0)
-	}
+	easycmd.SetCustomOptions(easycmd.CustomOption{
+		ExitAfterPrintHelpMsg: true,
+	})
 
 	return &cli.App{
-		Name:            name,
-		Commands:        makeCommands(),
-		HideHelpCommand: true,
-		HideVersion:     true,
-	}
-
-}
-
-func makeCommands() []*cli.Command {
-	return []*cli.Command{
-		&cmdMock, &cmdTypeDef,
+		Name: name,
+		Commands: []*cli.Command{
+			cmdMock.Root(), cmdTypeDef.Root(),
+		},
+		HideVersion: true,
 	}
 }
 
