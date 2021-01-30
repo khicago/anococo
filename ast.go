@@ -19,7 +19,7 @@ func MockCocoList() []gococo.Coco {
 
 type (
 	// InspectHandler
-	InspectHandler func(pth string, node ast.Node) bool
+	InspectHandler func(pth string, p *ast.Package, node ast.Node) bool
 
 	astInspector struct {
 		fSet *token.FileSet
@@ -45,8 +45,8 @@ func (s *astInspector) walk(handler InspectHandler) error {
 			if err != nil {
 				return err
 			}
-			for _, v := range pkgLst {
-				ast.Inspect(v, func(node ast.Node) bool { return handler(pth, node) })
+			for _, pkg := range pkgLst {
+				ast.Inspect(pkg, func(node ast.Node) bool { return handler(pth, pkg, node) })
 			}
 			return nil
 		})
